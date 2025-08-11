@@ -1,7 +1,7 @@
 # Sensor Data from Phone Device to MIDI via WebSocket
 
-This project bridges sensor data received over OSC (Open Sound Control) to MIDI Control Change (CC) signals using WebSockets and the Web MIDI API in the browser.
-You can use Sensors2OSC which has is very compact and simple to use.
+-This project bridges sensor data received over OSC (Open Sound Control) to MIDI Control Change (CC) signals using WebSockets and the Web MIDI API in the browser.
+-You can use Sensors2OSC which has is very compact and simple to use.
 ---
 
 ## Overview

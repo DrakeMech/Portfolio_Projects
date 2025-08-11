@@ -1,7 +1,7 @@
 # Sensor Data from Phone Device to MIDI via WebSocket
 
-This project bridges sensor data received over OSC (Open Sound Control) to MIDI Control Change (CC) signals using WebSockets and the Web MIDI API in the browser.
-You can use Sensors2OSC which has is very compact and simple to use.
+This project bridges sensor data received from OSC (Open Sound Control) to MIDI Control Change (CC) signals using WebSockets and the Web MIDI API in the browser.
+You can use Sensors2OSC which has is very compact and simple to use for sending that OSC data through your Phone Device. 
 
 
 ## Overview
@@ -19,8 +19,8 @@ You can use Sensors2OSC which has is very compact and simple to use.
 - Python 3.7+
 - Python packages: `websockets`, `python-osc`
 - Modern browser with Web MIDI API support (Chrome, Edge)
-- Virtual MIDI port tool (loopMIDI for Windows recommended)
-- MIDI monitoring software (optional, for debugging)
+- Virtual MIDI port tool (loopMIDI for Windows recommended, srry for Mac Users) (Might be other options too, a little research might help you find it.)
+- MIDI monitoring software (optional, for debugging) (MIDI-OX/Pocket MIDI or some other software you might find)
 
 ---
 ## Use
@@ -41,3 +41,6 @@ python sensordata.py
 /inclination — Single inclination value.
 
 The Python server parses these OSC messages and sends JSON data to the browser. Hope someone find this usefull. I've been lazy writing the README
+
+### 3. Just Use it
+It will make the phone function as a MIDI controler. Maybe you would want to design something usefull out of it or even idk build on top of it... Good luck ;) !

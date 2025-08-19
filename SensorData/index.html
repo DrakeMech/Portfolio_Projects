@@ -18,6 +18,16 @@
             then choose the same port as input in Pocket MIDI.
         </div>
         <hr/>
+        <!-- Assign buttons to send fixed CC=127 -->
+        <div style="display:flex; gap:.5rem; align-items:center; flex-wrap: wrap; margin:.5rem 0;">
+          <strong>Assign helpers:</strong>
+          <div id="assignControls" style="display:flex; gap:.5rem; flex-wrap: wrap;">
+            <button data-cc="1">Send CC1 = 127 (Touch)</button>
+            <button data-cc="2">Send CC2 = 127 (Magnetic)</button>
+            <button data-cc="3">Send CC3 = 127 (Inclination)</button>
+            <button data-cc="4">Send CC4 = 127 (Touch Surface)</button>
+          </div>
+        </div>
     </div>
     <script type="module" src="script.js"></script>
     <!-- <script type="module" src="sensorReceiver.js"></script> -->

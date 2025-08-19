@@ -43,4 +43,8 @@ python sensordata.py
 The Python server parses these OSC messages and sends JSON data to the browser. Hope someone find this usefull. I've been lazy writing the README
 
 ### 3. Just Use it
-It will make the phone function as a MIDI controler. Maybe you would want to design something usefull out of it or even idk build on top of it... Good luck ;) !
+It will make the phone function as a MIDI controler. Maybe you would want to design something usefull out of it or even idk build on top of it... Good luck ;
+
+## OR 
+
+Just use the Bat executable (RunWebSocket.bat) to run step by step without bothering using VsCode, if you want just to play with the sensors without actually building on top of it. 

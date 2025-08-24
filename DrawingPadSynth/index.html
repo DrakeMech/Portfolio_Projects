@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drawing Pad Synth</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        canvas { border: 1px solid #ccc; background: #fff; }
+    </style>
+</head>
+<body>
+    <canvas id="tabletCanvas" width="1000" height="600"></canvas>
+    <button id="assignCC1" style="position:fixed; top:180px; right:20px; z-index:11;">Assign MIDI CC1</button>
+    <button id="assignCC2" style="position:fixed; top:220px; right:20px; z-index:11;">Assign MIDI CC2</button>
+    <div id="dataViz" style="position:fixed; top:20px; right:20px; background:#fff; border:1px solid #ccc; padding:10px; font-family:monospace; z-index:10; min-width:160px;">
+        <div>Pressure: <span id="pressureVal">0</span></div>
+        <div style="height:20px; background:#eee; margin:4px 0; position:relative;">
+            <div id="pressureBar" style="height:100%; background:#007bff; width:0;"></div>
+        </div>
+        <div>X: <span id="xVal">0</span></div>
+        <div>Y: <span id="yVal">0</span></div>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

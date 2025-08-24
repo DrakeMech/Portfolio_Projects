@@ -188,14 +188,23 @@ function mapAngleToCC(angleRad, span = 'half') {
 
 // ---- MIDI send ----
 
+
+import { parse } from './midi.js';
+
 /**
- * Send MIDI CC message (channel 1)
+ * Send MIDI CC message (channel 1) and log parsed message
  * @param {number} cc
  * @param {number} value
  */
 function sendCC(cc, value) {
   if (midiOutput) {
-    midiOutput.send([0xB0, cc & 0x7F, value & 0x7F]);
+    const msg = [0xB0, cc & 0x7F, value & 0x7F];
+    midiOutput.send(msg);
+    // Log parsed MIDI message
+    const parsed = parse(new Uint8Array(msg));
+    if (parsed) {
+      console.log('Parsed MIDI:', parsed);
+    }
   }
 }
 

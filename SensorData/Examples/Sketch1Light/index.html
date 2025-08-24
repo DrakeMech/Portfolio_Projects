@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div style="font-family: system-ui, sans-serif; margin: 1rem;">
+        <h3>Sensor → Web MIDI bridge</h3>
+        <div style="display:flex; gap:.5rem; align-items:center; flex-wrap: wrap;">
+            <label for="midiOutputs"><strong>MIDI Output:</strong></label>
+            <select id="midiOutputs"></select>
+            <button id="refreshMidi">Refresh</button>
+            <span id="midiStatus" style="opacity:.8"></span>
+        </div>
+        <div style="margin-top:.5rem; font-size:.9rem; opacity:.8;">
+            Tip: On Windows, install a virtual loopback port (e.g., loopMIDI), select it here,
+            then choose the same port as input in Pocket MIDI.
+        </div>
+        <hr/>
+        <!-- Assign buttons to send fixed CC=127 -->
+        <div style="display:flex; gap:.5rem; align-items:center; flex-wrap: wrap; margin:.5rem 0;">
+          <strong>Assign helpers:</strong>
+          <div id="assignControls" style="display:flex; gap:.5rem; flex-wrap: wrap;">
+            <button data-cc="1">Send CC1 = 127 (Touch)</button>
+          </div>
+        </div>
+        <div id="light">Light</div>
+    </div>
+    <script type="module" src="script.js"></script>
+    <!-- <script type="module" src="sensorReceiver.js"></script> -->
+</body>
+</html>

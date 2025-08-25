@@ -22,14 +22,14 @@ let midiOutput = null;
 const notes = [60, 62, 64, 65, 67, 69, 71, 72]; // C4 D4 E4 F4 G4 A4 B4 C5
 
 const noteColors = [
-    '#FFB300', // C4 - orange
-    '#FF5252', // D4 - red
-    '#FF4081', // E4 - pink
-    '#7C4DFF', // F4 - purple
-    '#448AFF', // G4 - blue
-    '#00BFAE', // A4 - teal
-    '#69F0AE', // B4 - green
-    '#C6FF00'  // C5 - lime
+    '#ffb300ff / #958256ff ',   // C4 - orange
+    '#ff5252ff / #cb8080ff ',     // D4 - red
+    '#ff4281ff / #c47893ff ', // E4 - pink
+    '#7c4dffff / #7e6eaaff ', // F4 - purple
+    '#4287ffff / #6892d9ff ', // G4 - blue
+    '#00c2b2ff / #639c98ff ', // A4 - teal
+    '#6af0b0ff / #7daa95ff ',  // B4 - green
+    '#c8ff00ff / #97a46aff '    // C5 - lime
 ];
 let lastNote = null;
 
@@ -61,13 +61,6 @@ function sendNoteOff(note, velocity = 0, channel = 0) {
 function sendCC(cc, value, channel = 0) {
     sendMIDI([0xB0 + channel, cc, value]);
 }
-function sendPitchBend(value, channel = 0) {
-    // value: 0-16383
-    console.log(value);
-    const lsb = value & 0x7F;
-    const msb = (value >> 7) & 0x7F;
-    sendMIDI([0xE0 + channel, lsb, msb]);
-}
 
 function updateDataViz(x, y, pressure) {
     pressureVal.textContent = pressure.toFixed(2);
@@ -86,7 +79,11 @@ function draw() {
     for (let i = 0; i < 8; i++) {
         ctx.save();
         ctx.globalAlpha = 0.18;
-        ctx.fillStyle = noteColors[i];
+        const gradient = ctx.createLinearGradient(i * colWidth, 1, i * colWidth, canvas.height);
+        gradient.addColorStop(0, noteColors[i].split('/')[0]);
+        gradient.addColorStop(1, noteColors[i].split('/')[1]);
+        ctx.fillStyle = gradient;
+        // console.log(noteColors[i].split('/')[1]);
         ctx.fillRect(i * colWidth, 0, colWidth, canvas.height);
         ctx.restore();
     }
@@ -95,8 +92,8 @@ function draw() {
         const col = Math.floor(lastX / colWidth);
         ctx.save();
         ctx.beginPath();
-        ctx.arc(lastX, lastY, lastPressure * 10, 0, Math.PI * 2);
-        ctx.fillStyle = noteColors[Math.max(0, Math.min(7, col))];
+        ctx.arc(lastX, lastY, lastPressure * 12, 0, Math.PI * 2);
+        // ctx.fillStyle = noteColors[Math.max(0, Math.min(7, col))];
         ctx.globalAlpha = 0.7;
         ctx.fill();
         ctx.restore();
@@ -116,13 +113,13 @@ function draw() {
 // Assign CC1 button event listener
 document.getElementById('assignCC1').addEventListener('click', () => {
     sendCC(1, 127);
-    setTimeout(() => sendCC(1, 0), 12); // optional: send 0 after for DAWs that require movement
+    setTimeout(() => sendCC(1, 0), 12); 
 });
 
 // Assign CC2 button event listener
 document.getElementById('assignCC2').addEventListener('click', () => {
     sendCC(2, 127);
-    setTimeout(() => sendCC(2, 0), 12); // optional: send 0 after for DAWs that require movement
+    setTimeout(() => sendCC(2, 0), 12); 
 });
 
 draw();

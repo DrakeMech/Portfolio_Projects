@@ -22,14 +22,14 @@ let midiOutput = null;
 const notes = [60, 62, 64, 65, 67, 69, 71, 72]; // C4 D4 E4 F4 G4 A4 B4 C5
 
 const noteColors = [
-    '#ffb300ff / #958256ff ',   // C4 - orange
+    '#ffb300ff / #a29b8cff ',   // C4 - orange
     '#ff5252ff / #cb8080ff ',     // D4 - red
-    '#ff4281ff / #c47893ff ', // E4 - pink
+    '#ff4281ff / #b58d9bff ', // E4 - pink
     '#7c4dffff / #7e6eaaff ', // F4 - purple
     '#4287ffff / #6892d9ff ', // G4 - blue
-    '#00c2b2ff / #639c98ff ', // A4 - teal
-    '#6af0b0ff / #7daa95ff ',  // B4 - green
-    '#c8ff00ff / #97a46aff '    // C5 - lime
+    '#00c2b2ff / #759996ff ', // A4 - teal
+    '#6af0b0ff / #85a596ff ',  // B4 - green
+    '#c8ff00ff / #9ba088ff '    // C5 - lime
 ];
 let lastNote = null;
 

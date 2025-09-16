@@ -113,13 +113,13 @@ function draw() {
 // Assign CC1 button event listener
 document.getElementById('assignCC1').addEventListener('click', () => {
     sendCC(1, 127);
-    setTimeout(() => sendCC(1, 0), 12); 
+    setTimeout(() => sendCC(1, 0), 12); // optional: send 0 after for DAWs that require movement
 });
 
 // Assign CC2 button event listener
 document.getElementById('assignCC2').addEventListener('click', () => {
     sendCC(2, 127);
-    setTimeout(() => sendCC(2, 0), 12); 
+    setTimeout(() => sendCC(2, 0), 12); // optional: send 0 after for DAWs that require movement
 });
 
 draw();

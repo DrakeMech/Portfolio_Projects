@@ -1,0 +1,79 @@
+html{
+    background-color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+
+h1{
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 700;
+  color: #ffdc1b;
+}
+.mainFrame{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    font-size: large;
+}
+input[type="button" i] {
+  padding: 10px;
+  font-size: 20px;
+  background-color:#ffdc1b;
+  border-radius: 3px;
+  border-width: 6px;
+  border-color: blue;
+  width: 120px;
+  text-align: center;
+  margin-inline: 10px;
+
+
+}
+#imageEl{
+  width: auto;
+  height: 300px;
+  margin:auto;
+}
+
+#imageEl.catch {
+  animation: animation 1s infinite;
+}
+
+@keyframes animation {
+  0% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+  75% {
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(1.1);
+  }
+}
+
+@keyframes shaking {
+  0% {
+      transform: rotate(0deg);
+  }
+
+  25% {
+      transform: rotate(2deg);
+  }
+
+  50% {
+      transform: rotate(0eg);
+  }
+
+  75% {
+      transform: rotate(-2deg);
+  }
+
+  100% {
+      transform: rotate(0deg);
+  }
+}

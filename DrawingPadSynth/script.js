@@ -19,17 +19,21 @@ yVal.textContent = '0';
 let midiAccess = null;
 let midiOutput = null;
 
-const notes = [60, 62, 64, 65, 67, 69, 71, 72]; // C4 D4 E4 F4 G4 A4 B4 C5
+const notes = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]; // C4 to B4 chromatic
 
 const noteColors = [
-    '#ffb300ff / #a29b8cff ',   // C4 - orange
-    '#ff5252ff / #cb8080ff ',     // D4 - red
-    '#ff4281ff / #b58d9bff ', // E4 - pink
-    '#7c4dffff / #7e6eaaff ', // F4 - purple
-    '#4287ffff / #6892d9ff ', // G4 - blue
-    '#00c2b2ff / #759996ff ', // A4 - teal
-    '#6af0b0ff / #85a596ff ',  // B4 - green
-    '#c8ff00ff / #9ba088ff '    // C5 - lime
+    '#ffb300ff / #a29b8cff ',   // C
+    '#ff9800ff / #bfa77fff ',   // C#
+    '#ff5252ff / #cb8080ff ',   // D
+    '#ff4281ff / #b58d9bff ',   // D#
+    '#7c4dffff / #7e6eaaff ',   // E
+    '#4287ffff / #6892d9ff ',   // F
+    '#00c2b2ff / #759996ff ',   // F#
+    '#6af0b0ff / #85a596ff ',   // G
+    '#c8ff00ff / #9ba088ff ',   // G#
+    '#b2ff59ff / #a2b88fff ',   // A
+    '#e040fbff / #b48fbfff ',   // A#
+    '#ff1744ff / #b88f8fff '    // B
 ];
 let lastNote = null;
 
@@ -42,8 +46,8 @@ function sendMIDI(data) {
 }
 
 function mapXToNote(x) {
-    const col = Math.floor(x / (canvas.width / 8));
-    return notes[Math.max(0, Math.min(7, col))];
+    const col = Math.floor(x / (canvas.width / 12));
+    return notes[Math.max(0, Math.min(11, col))];
 }
 
 function mapYToPitchBend(y) {
@@ -75,15 +79,14 @@ let lastX = 0, lastY = 0, lastPressure = 0;
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // Draw colored columns
-    const colWidth = canvas.width / 8;
-    for (let i = 0; i < 8; i++) {
+    const colWidth = canvas.width / 12;
+    for (let i = 0; i < 12; i++) {
         ctx.save();
         ctx.globalAlpha = 0.18;
         const gradient = ctx.createLinearGradient(i * colWidth, 1, i * colWidth, canvas.height);
         gradient.addColorStop(0, noteColors[i].split('/')[0]);
         gradient.addColorStop(1, noteColors[i].split('/')[1]);
         ctx.fillStyle = gradient;
-        // console.log(noteColors[i].split('/')[1]);
         ctx.fillRect(i * colWidth, 0, colWidth, canvas.height);
         ctx.restore();
     }
@@ -156,6 +159,7 @@ canvas.addEventListener("pointermove", (e) => {
             sendNoteOn(note, 70);
             lastNote = note;
         }
+        
     }
 });
 

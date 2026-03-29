@@ -1,0 +1,78 @@
+/* Shared UI theme for SensorData monitor and controls */
+body {
+  background: #0d1117;
+  color: #eaf2ff;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+.container {
+  padding: 1rem;
+  max-width: 1100px;
+  margin: auto;
+}
+h3 {
+  color: #70e0ff;
+}
+.panel {
+  border: 1px solid #00aaff;
+  border-radius: 10px;
+  background: #111820;
+  padding: 0.85rem;
+}
+.toolbar,
+.assign-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+.toolbar button,
+.assign-panel button,
+.monitor-controls button,
+.assign-panel select,
+.assign-panel input {
+  border: 1px solid #008fcc;
+  border-radius: 6px;
+  background: #141f2c;
+  color: #c7e9ff;
+  padding: 0.38rem 0.65rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.toolbar button:hover,
+.assign-panel button:hover,
+.monitor-controls button:hover {
+  background: #1c4c6f;
+  border-color: #00ccff;
+}
+.monitor-panel {
+  margin-top: 1rem;
+  display: none;
+}
+.monitor-tabs,
+.monitor-stats,
+.monitor-graph {
+  margin-top: 0.75rem;
+}
+.monitor-tabs button {
+  background: #12232f;
+  border: 1px solid #0a61a8;
+  color: #b6d8ff;
+}
+.monitor-tabs button.active {
+  background: #0e90d1;
+  border-color: #00b8ff;
+  color: #fff;
+}
+.monitor-graph canvas {
+  width: 100%;
+  max-height: 260px;
+  border: 1px solid #00aaff;
+  border-radius: 8px;
+  background: #0b1621;
+}
+.assign-status,
+.no-data {
+  margin-top: 0.5rem;
+  color: #8fb4d8;
+}

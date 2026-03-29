@@ -4,6 +4,7 @@ import json
 from pythonosc import dispatcher, osc_server
 
 clients = set()
+sim_handlers = {}
 
 # This should be runned through the terminal to set off the websocket client where all the python data will be sent to the script.js (e.g. `python sensorData.py` after creating new terminal up in the navbar in VsCode)
 
@@ -16,6 +17,22 @@ async def ws_handler(websocket):
         except Exception:
             peer = None
         print(f"WebSocket client connected: {peer} | total clients: {len(clients)}")
+        
+        async for message in websocket:
+            try:
+                data = json.loads(message)
+                if "simulate" in data:
+                    address = data["simulate"]
+                    args = data.get("args", [])
+                    if address in sim_handlers:
+                        sim_handlers[address](address, *args)
+                    elif address.startswith("/touch"):
+                        touch_handler(address, *args)
+                    else:
+                        default_handler(address, *args)
+            except json.JSONDecodeError:
+                pass  # Ignore invalid JSON
+        
         await websocket.wait_closed()
     finally:
         clients.remove(websocket)
@@ -133,10 +150,35 @@ async def main():
         disp.map(f"/touch{i}", touch_handler)
     # Catch-all for everything else (e.g., multitouch, tuio, etc.)
     disp.set_default_handler(default_handler)
-    server = osc_server.AsyncIOOSCUDPServer(("0.0.0.0", 9000), disp, asyncio.get_event_loop())
-    transport, protocol = await server.create_serve_endpoint()
     
-    ws_server = await websockets.serve(ws_handler, "0.0.0.0", 8765)
+    # Simulation handlers for WebSocket injection
+    global sim_handlers
+    sim_handlers = {
+        "/rotationvector": rotation_handler,
+        "/inclination": inclination_handler,
+        "/magneticfield": magneticfield_handler,
+    }
+
+    # Bind OSC to local machine / all interfaces rather than a specific router IP.
+    # Use "127.0.0.1" for local-only, or "0.0.0.0" to accept from any interface.
+    osc_bind_host = "0.0.0.0"  # change to "127.0.0.1" if you only need local client on same host
+    osc_port = 9000
+    server = osc_server.AsyncIOOSCUDPServer((osc_bind_host, osc_port), disp, asyncio.get_event_loop())
+    try:
+        transport, protocol = await server.create_serve_endpoint()
+    except OSError as e:
+        print(f"ERROR: Cannot bind OSC port 9000: {e}")
+        print("Hint: another sensorData instance is already running, or the port is busy.")
+        print("* To fix: stop the other process or use a different port in both sensorData.py and your ESP32 sender.")
+        return
+
+    try:
+        ws_server = await websockets.serve(ws_handler, "0.0.0.0", 8765)
+    except OSError as e:
+        print(f"ERROR: Cannot bind WebSocket port 8765: {e}")
+        transport.close()
+        return
+
     print("OSC on port 9000 → WebSocket on port 8765")
 
     await asyncio.Future()  # run forever

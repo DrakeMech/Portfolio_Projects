@@ -80,7 +80,7 @@ ctk.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark
 
 root = ctk.CTk()
 root.title('SensorData Launcher')
-root.geometry('400x240')
+root.geometry('350x280')
 root.resizable(False, False)
 
 frame = ctk.CTkFrame(root, fg_color="#1a1a1a", border_width=2, border_color="#00ffff")
@@ -99,7 +99,7 @@ open_ui_btn = ctk.CTkButton(frame, text='Open local UI', width=200, height=35, f
 open_ui_btn.pack(pady=5)
 
 show_urls_btn = ctk.CTkButton(frame, text='Show connection URLs', width=200, height=35, fg_color="#333333", hover_color="#555555", border_width=1, border_color="#00ffff", command=open_console)
-show_urls_btn.pack(pady=5)
+show_urls_btn.pack(pady=(1, 15))
 
 
 threading.Thread(target=check_process, daemon=True).start()

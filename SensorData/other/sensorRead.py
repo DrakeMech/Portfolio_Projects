@@ -1,5 +1,9 @@
-from pythonosc import dispatcher
-from pythonosc import osc_server
+try:
+    from pythonosc import dispatcher, osc_server
+except ImportError as error:
+    raise RuntimeError(
+        "python-osc is required; install it with 'python -m pip install python-osc'."
+    ) from error
 
 def print_handler(address, *args):
     print(f"{address}: {args}")

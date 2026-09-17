@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const logo = document.querySelector('.logo');
     const menuBtnDivs = document.querySelectorAll('.menuBtn div');
     const imageCover = document.querySelector('.imageCover');
-
+    let buttonBackgroundColor = '#FFF'; // Default background color for menu buttons'
+    const viewportWidth = document.documentElement.clientWidth;
     // Scroll effect for menu
     if (name && logo && imageCover) {
         window.addEventListener('scroll', function () {
@@ -13,8 +14,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const opacity = isScrolledPastHero ? 0 : 1;
             name.style.opacity = logo.style.opacity = opacity;
 
-            // Change the background color of the menu buttons based on the scroll position
-            const buttonBackgroundColor = isScrolledPastHero ? '#e7e7e7' : '#FFF';
+            // Change the background color of the menu buttons based on the scroll position and viewport width
+            if (viewportWidth >= 480) {
+                buttonBackgroundColor = isScrolledPastHero ? '#e7e7e7' : '#FFF';
+            } else if (viewportWidth < 480) {
+                buttonBackgroundColor = '#2c2c2c';
+            }
             menuBtnDivs.forEach(btnDiv => {
                 btnDiv.style.background = buttonBackgroundColor;
             });

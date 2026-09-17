@@ -16,8 +16,8 @@
 
     <!-- SIDEBAR -->
     <div style="display: none;" id="sideBar">
-        <div class="wrapp">
-            <button id="close" onclick="sideBarCl()">
+        <div class="wrappClose">
+                <button id="close" onclick="sideBarCl()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M32.7128 32.7128C31.7493 33.6764 30.187 33.6764 29.2234 32.7128L10.9042 14.3936C9.94068 13.43 9.94067 11.8678 10.9042 10.9042C11.8678 9.94067 13.4301 9.94067 14.3936 10.9042L32.7128 29.2234C33.6764 30.187 33.6764 31.7493 32.7128 32.7128Z"
@@ -27,6 +27,8 @@
                         fill="white" />
                 </svg>
             </button>
+        </div>
+        <div class="wrapp">
             <div class="wrappBio">
                 <div class="bioText">
                     <div class="bioTitle">Stefan Cristache</div>
@@ -35,26 +37,26 @@
                     <p>Hello! I'm Stefan, a 24 year old interaction designer and music enthusiast and instrument maker. I'm extremely passionate about creating interactive musical experiences and I love experimental work.</p>
                     <p>Of course, I also enjoy playing guitar and keyboard and also playing with digital synths. Sometimes I experiment with foley and other audio experiments such as sound design, but other times I focus on the tangible interface design conceptualize in my free time.</p>
                 </div>
-                <div id="linksEl">
-                    <a href="https://drakemech.github.io/Portfolio_Projects/Portfolio%20Website/Resume/Resume.pdf" target="_blank" class="bioButton">Resume</a>
-                    <a href="https://www.linkedin.com/in/stefan-cristache/" class="bioButton">LinkedIn</a>
-                    <a href="https://github.com/DrakeMech/Portfolio_Projects" class="bioButton">GitHub</a>
-                </div>
+                <menu id="linksEl">
+                        <li><a href="https://drakemech.github.io/Portfolio_Projects/Portfolio%20Website/Resume/Resume.pdf" target="_blank" class="bioButton">Resume</a></li>
+                        <li><a href="https://www.linkedin.com/in/stefan-cristache/" class="bioButton">LinkedIn</a></li>
+                        <li><a href="https://github.com/DrakeMech/Portfolio_Projects" class="bioButton">GitHub</a></li>
+                </menu>
 
-                <div id="edList">
-                    <div class="titleEd">Contact</div>
-                    <div class="infoEd">
+                <ul id="edList">
+                    <li class="titleEd">Contact</li>
+                    <li class="infoEd">
                         <p>E-mail: limit_overthe@yahoo.com</p>
                         <p>Location: Malmo, Sweden</p>
-                    </div>
-                    <div class="titleEd">Education</div>
-                    <div class="infoEd">
+                    </li>
+                    <li class="titleEd">Education</li>
+                    <li class="infoEd">
                         <p>Colegiul National "Barbu Stirbei": Computer Science</p>
                         <p>Malmö University: Bachelors of Science in Interaction Design (pending...)</p>
                         <p><strong>COURSES:</strong></p>
                         <p>Malta University: Audio Production, Radio Production, Visual and Audio aesthetics in Filmography</p>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -77,6 +79,7 @@
     <div class="imageCover">
         
         <div class="frontText">
+            <div class = "name2">Stefan Cristache</div>
             <div class = "pageTitle">Portfolio</div>
         </div>
 
@@ -125,14 +128,14 @@
 
         <div class="heroDots" aria-hidden="false"></div>
 
-        <div class="frontSmallText">
+        <!-- <div class="frontSmallText">
             <div> Digital Projects</div>
             <div class="scrollBox">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22" fill="none">
                     <path d="M7.41228 20.722C7.8028 21.1126 8.43597 21.1126 8.82649 20.722L15.1905 14.3581C15.581 13.9675 15.581 13.3344 15.1905 12.9439C14.7999 12.5533 14.1668 12.5533 13.7762 12.9439L8.11938 18.6007L2.46253 12.9439C2.07201 12.5533 1.43884 12.5533 1.04832 12.9439C0.657793 13.3344 0.657793 13.9675 1.04832 14.3581L7.41228 20.722ZM7.11938 0.223877L7.11938 20.0149H9.11938L9.11938 0.223877L7.11938 0.223877Z" fill="white" />
                 </svg>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- SIDE PROJECTS SECTION -->

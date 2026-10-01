@@ -45,6 +45,15 @@
             background: #000;
         }
 
+        .videoPlaceholder {
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            color: #aaa;
+            text-align: center;
+            border: 1px dashed #555;
+        }
+
         .videoContainer iframe,
         .videoContainer video {
             position: absolute;

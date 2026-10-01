@@ -16,6 +16,7 @@
 
     <!-- SIDEBAR -->
     <div style="display: none;" id="sideBar">
+        <div class="bg"></div>
         <div class="wrappClose">
                 <button id="close" onclick="sideBarCl()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
@@ -29,20 +30,18 @@
             </button>
         </div>
         <div class="wrapp">
+             
             <div class="wrappBio">
+                <div class="bioTitle">Stefan Cristache</div>
                 <div class="bioText">
-                    <div class="bioTitle">Stefan Cristache</div>
+                    
+                    <h2 class="bioSubtitle">About Me</h2>
                     <img src="img/main/AboutImage.png" alt="Stefan Cristache" class="bioImage">
-                    <h2>About</h2>
-                    <p>Hello! I'm Stefan, a 24 year old interaction designer and music enthusiast and instrument maker. I'm extremely passionate about creating interactive musical experiences and I love experimental work.</p>
-                    <p>Of course, I also enjoy playing guitar and keyboard and also playing with digital synths. Sometimes I experiment with foley and other audio experiments such as sound design, but other times I focus on the tangible interface design conceptualize in my free time.</p>
-                </div>
-                <menu id="linksEl">
-                        <li><a href="https://drakemech.github.io/Portfolio_Projects/Portfolio%20Website/Resume/Resume.pdf" target="_blank" class="bioButton">Resume</a></li>
-                        <li><a href="https://www.linkedin.com/in/stefan-cristache/" class="bioButton">LinkedIn</a></li>
-                        <li><a href="https://github.com/DrakeMech/Portfolio_Projects" class="bioButton">GitHub</a></li>
-                </menu>
 
+                    <p>Hello! I'm Stefan, a recent interaction design graduate, music enthusiast and instrument maker. I'm extremely passionate creating interactive physical experiences and I love experimental work.</p>
+                    <p>I also enjoy playing guitar and keyboard and also playing with digital synths. Sometimes I experiment with foley and other audio experiments such as sound design, but other times I focus on the tangible interface design conceptualize in my free time.</p>
+                 
+                </div>
                 <ul id="edList">
                     <li class="titleEd">Contact</li>
                     <li class="infoEd">
@@ -57,6 +56,16 @@
                         <p>Malta University: Audio Production, Radio Production, Visual and Audio aesthetics in Filmography</p>
                     </li>
                 </ul>
+
+                <div class="sidebarCta">
+                    <p>LIKE WHAT YOU SEE?</p>
+                    <h2>Let's Connect!</h2>
+                </div>
+                <menu id="linksEl">
+                    <li><a href="https://drakemech.github.io/Portfolio_Projects/Portfolio%20Website/Resume/Resume.pdf" target="_blank" class="bioButton">Resume</a></li>
+                    <li><a href="https://www.linkedin.com/in/stefan-cristache/" class="bioButton">LinkedIn</a></li>
+                    <li><a href="https://github.com/DrakeMech/Portfolio_Projects" class="bioButton">GitHub</a></li>
+                </menu>
             </div>
         </div>
     </div>
@@ -113,7 +122,7 @@
                     <p>An AR design project catered to build awareness of the user's historical interactions with their home plants.</p>
                 </div>
             </div>
-            <div class="projectCard">
+            <div class="projectCard"  onclick="openProjectMain('pages/project4.html','Non-Newtonian Fluid UI for Sonic Manipulation')">
                 <div class="projectImage">
                     <img src="img/main/Project4Cover.jpg" alt="Project 4">
                 </div>
@@ -121,7 +130,6 @@
                     <h3>Non-Newtonian Fluid UI for Sonic Manipulation</h3>
                     <p>Thesis project exploring the inherent kinetic feedback of Oobleck, a non-Newtonian fluid, to enable novel forms of sonic manipulation through its non-linear properties. 
                     </p> 
-                    <p>-Work in Progress-</p>
                 </div>
             </div>
         </div>

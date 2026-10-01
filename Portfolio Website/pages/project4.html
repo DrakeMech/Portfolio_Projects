@@ -11,16 +11,16 @@
     <script src="../js/main.js"></script>
     <script src="../js/sideBar.js"></script>
 
-    <title>[Project Title] - Stefan Cristache Portfolio</title>
+    <title>Non-Newtonian Fluid Tangible User Interface - Stefan Cristache Portfolio</title>
 
 </head>
 
 <body>
 
 
-    <div class="imageCover" style="background-image: linear-gradient(0deg, #131313 0%, rgba(0, 0, 0, 0.00) 10%), url('../img/main/Dice Project.png');">
+    <div class="imageCover" style="background-image: linear-gradient(0deg, #131313 5%, rgba(0, 0, 0, 0.00) 10%), url('../img/main/Gestures.png');">
         <div class="frontText">
-            <div class="pageTitle">[Project Title]</div>
+            <div class="pageTitle">Non-Newtonian Fluid UI for Sonic Manipulation</div>
         </div>
     </div>
 
@@ -29,58 +29,57 @@
     <main>
         <div class="projectContent">
 
-            <img src="../img/main/Dice Project.png" alt="Project Cover" class="coverImage">
+            <img src="../img/main/Project4Cover.jpg" alt="Oobleck tangible interface prototype being explored by hand" class="coverImage">
 
-            <h1>[Project Title]</h1>
-            <h3>[Project Subtitle or Tagline]</h3>
+            <h1>Non-Newtonian Fluid Tangible User Interface for Sonic Manipulations</h1>
+            <h3>Non-linear Kinesthetic Feedback with Oobleck in Audio Production</h3>
 
             <h2>Overview</h2>
-            <p>[Add project overview paragraph here. Describe the main concept, purpose, and what you were trying to achieve.]</p>
-            <p>[Add more details about the project context and background.]</p>
+            <p>Digital audio interfaces often represent sound visually, leaving the physical controller with limited tactile feedback. This thesis investigates Oobleck, a shear-thickening mixture of cornstarch and water, as a tangible interface between a person's gestures and sonic transformations.</p>
+            <p>The project explores how Oobleck's changing resistance can make sound manipulation physical and expressive. Rather than treating the material as a conventional, stable controller, the work studies its changing states and how those states shape the relationship between gesture, touch, and sound.</p>
 
+            <h2>Aim and Objectives</h2>
+            <p>The aim was to explore whether Oobleck's non-linear physical feedback could support expressive interaction with sound, and how different material constructions influence that experience.</p>
+            <p><strong>Project objectives:</strong></p>
+            <p>01. Explore how gestures and Oobleck's liquid-to-solid response relate to sonic change.</p>
+            <p>02. Compare freeform Oobleck with elastic and plastic containment surfaces.</p>
+            <p>03. Prototype and evaluate a pressure-sensitive tangible interface for audio post-production.</p>
+            <p>04. Use participant feedback to identify useful interaction qualities and material limitations.</p>
 
-            <h2>Demo Video</h2>
-            <div class="videoContainer">
-                <div class="videoWrapper">
+            <h2>Research Approach</h2>
+            <p>The project used a research-through-design process, combining material-driven and interaction-driven design. Prototypes were developed and tested across two iterative cycles. Think-aloud sessions and participant descriptions helped capture how the material felt, how people interacted with it, and how they interpreted the resulting sound.</p>
+            <p>Seven music students and producers took part across two testing sessions. The prototypes explored freeform, elastic-covered, and plastic-covered Oobleck. Participants focused on listening and interacting with the material, helping reveal how the physical setup shaped their gestures and sonic expectations.</p>
 
-                    <iframe src="https://www.youtube.com/embed/[VIDEO_ID]" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-                <p class="videoLabel">YouTube Demo - Replace [VIDEO_ID] with your YouTube video ID</p>
+            <h2>Prototype and Technical Setup</h2>
+            <p>A force-sensitive resistor (FSR) beneath the Oobleck container captured pressure. An Arduino Nano 33 BLE and the Control Surface library translated sensor readings into MIDI Control Change values. The sensor range was mapped from 0-4019 to the MIDI CC range of 0-127.</p>
+            <p>The MIDI data controlled four effects in Ableton Live 12, allowing participants to transform existing audio. A later prototype explored a six-input arrangement, combining mappings for different material samples with digital interaction sketches.</p>
+            <p><strong>Tools:</strong> Oobleck (cornstarch and water), FSR pressure sensing, Arduino Nano 33 BLE, Control Surface library, MIDI CC, Arduino IDE Serial Plotter, and Ableton Live 12.</p>
+
+            <h2>Key Findings</h2>
+            <p>Participants connected the material's changing resistance to changes in sound. Applying sudden force made the Oobleck resist movement and supported abrupt sonic transformations, including sharp panning changes. Gentle, sustained gestures kept the material more fluid and supported continuous modulation.</p>
+            <p>The containment surface shaped the interaction: freeform Oobleck provided rich direct tactile feedback but could feel sticky and unpredictable, while elastic and plastic covers filtered some of that contact and emphasized other qualities, such as resistance and force feedback. Participants generally saw the prototypes as tools for transforming existing audio rather than generating sound from scratch, pointing toward post-production and sound-design workflows.</p>
+
+            <h2>Challenges and Limitations</h2>
+            <p>Oobleck's behavior changed over time as water evaporated and cornstarch settled. This affected consistency, transition speed, and sensor readings, making the interface less predictable across longer sessions. Its binding quality could also make it difficult for users to release or reposition their fingers.</p>
+            <p>The tested setup relied primarily on pressure sensing, which limited the range and spatial complexity of detectable gestures. The results are exploratory and reflect a small participant group; they do not establish a stable, general-purpose controller.</p>
+
+            <h2>Future Work</h2>
+            <p>Future iterations could investigate ways to slow material decay, use multiple sensors across a larger surface, and explore capacitive sensing alongside pressure. Further studies with sound designers, foley artists, and mixing engineers could test how the interface fits professional post-production practice.</p>
+            <p>The thesis also proposes exploring Oobleck and other phase-changing materials for visual, haptic, or other forms of tangible interaction beyond audio.</p>
+
+            <h2>Prototype Demonstration</h2>
+            <div class="videoContainer videoPlaceholder">
+                <p>Video placeholder: Oobleck gestures and corresponding sonic transformations</p>
             </div>
 
-            <h2>Process Video</h2>
-            <div class="videoContainer">
-                <div class="videoWrapper">
-                    <video controls>
-                        <source src="../videos/your-video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <p class="videoLabel">Local Video - Upload your video file to /videos/ folder and update the src</p>
+            <h2>Prototype Process</h2>
+            <div class="videoContainer videoPlaceholder">
+                <p>Video placeholder: material preparation, prototype construction, and user testing</p>
             </div>
 
-            <h2>Technical Details</h2>
-            <h3>Technologies Used</h3>
-            <p>[List and describe the technologies, languages, libraries, and tools used in this project.]</p>
-
-            <h3>Key Features</h3>
-            <p>[Describe the main features and functionality of the project.]</p>
-            <p>[Add more features as needed.]</p>
-
-            <h2>Challenges & Solutions</h2>
-            <p>[Describe challenges you faced during development and how you solved them.]</p>
-            <p>[Add additional challenges and solutions.]</p>
-
-            <h2>Key Learnings</h2>
-            <p>[Discuss what you learned from this project.]</p>
-            <p>[Add more insights and takeaways.]</p>
-
-            <h2>Future Improvements</h2>
-            <p>[List potential improvements or features for future iterations.]</p>
-
-            <h2>Links & Resources</h2>
-            <p><a href="#" style="color: #7dd3fc;">GitHub Repository</a> - [Add link to your GitHub repo]</p>
-            <p><a href="#" style="color: #7dd3fc;">Live Demo</a> - [Add link to live project if available]</p>
+            <h2>Thesis and Resources</h2>
+            <p><a href="../../ThesisResearchTools/IDB_Thesis_Stefan_Cristache.pdf" style="color: #7dd3fc;">Read the full thesis (PDF)</a></p>
+            <p><a href="https://github.com/DrakeMech/ThesisAppendixContent/tree/main/Tools/FSR_Data_Recorder" style="color: #7dd3fc;">FSR data recorder appendix</a></p>
 
         </div>
     </main>

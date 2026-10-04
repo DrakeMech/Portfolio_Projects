@@ -1159,8 +1159,8 @@ main {
 
 #sideBar .wrapp,
 #sideBar .wrappClose {
-  position: relative;
-  z-index: 1;
+  /* position: relative; */
+  z-index: 400;
   padding-bottom: 20px;
 }
 

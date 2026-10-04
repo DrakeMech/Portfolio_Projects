@@ -10,6 +10,7 @@ ctx.strokeStyle = "black";
 
 const pressureVal = document.getElementById('pressureVal');
 const pressureBar = document.getElementById('pressureBar');
+const midiStatus = document.getElementById('midiStatus');
 const xVal = document.getElementById('xVal');
 xVal.textContent = '0';
 const yVal = document.getElementById('yVal');
@@ -143,11 +144,14 @@ canvas.addEventListener("pointerdown", (e) => {
 });
 
 canvas.addEventListener("pointermove", (e) => {
+    lastX = e.offsetX;
+    lastY = e.offsetY;
+    lastPressure = e.pressure;
+    updateDataViz(lastX, lastY, lastPressure);
+    // isDrawing document.body add event for debugging
+        // console.log(isDrawing);
     if (isDrawing) {
-        lastX = e.offsetX;
-        lastY = e.offsetY;
-        lastPressure = e.pressure;
-        updateDataViz(lastX, lastY, lastPressure);
+        
         // Send CC1 (pressure)
         sendCC(1, Math.floor(lastPressure * 127));
         // Send CC2 (Y axis)
@@ -187,11 +191,17 @@ if (navigator.requestMIDIAccess) {
         const outputs = Array.from(midiAccess.outputs.values());
         if (outputs.length > 0) {
             midiOutput = outputs[0];
+            midiStatus.textContent = `Connected: ${midiOutput.name}`;
             console.log('MIDI Output:', midiOutput.name);
         } else {
+            midiStatus.textContent = 'No output found';
             console.warn('No MIDI outputs found');
         }
+    }).catch((error) => {
+        midiStatus.textContent = `Unavailable: ${error.message}`;
+        console.error('Web MIDI initialization failed:', error);
     });
 } else {
-    alert('Web MIDI API not supported');
+    midiStatus.textContent = 'Web MIDI not supported';
+    console.warn('Web MIDI API not supported');
 }

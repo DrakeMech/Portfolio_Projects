@@ -10,6 +10,9 @@
             font-family: "Trebuchet MS", "Segoe UI", sans-serif;
             --tilt-x: 0deg;
             --tilt-y: 0deg;
+            --spin-x: 0deg;
+            --spin-y: 0deg;
+            --spin-z: 0deg;
             --shear: 0deg;
             --shine-x: 50%;
             --shine-y: 50%;
@@ -50,7 +53,7 @@
             color: white;
             background: #d0be22 url("CardPoke.png") center / 100% 100% no-repeat;
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.48), 0 0 0 1px rgba(255, 255, 255, 0.32) inset;
-            transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) skewX(var(--shear));
+            transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) rotateX(var(--spin-x)) rotateY(var(--spin-y)) rotateZ(var(--spin-z)) skewX(var(--shear));
             transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 220ms cubic-bezier(0.4, 0, 0.2, 1);
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
@@ -89,6 +92,10 @@
 
         #gradientButton:hover {
             box-shadow: 0 38px 82px rgba(0, 0, 0, 0.55), 0 0 34px rgba(86, 228, 219, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.45) inset;
+        }
+
+        #gradientButton.is-spinning {
+            transition: none;
         }
 
         #gradientButton:focus-visible {

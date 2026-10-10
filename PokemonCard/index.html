@@ -98,6 +98,10 @@
             transition: none;
         }
 
+        #gradientButton.is-stabilizing {
+            transition: transform var(--spin-stabilize-duration) cubic-bezier(0.2, 0.75, 0.3, 1);
+        }
+
         #gradientButton:focus-visible {
             outline: 3px solid #fff;
             outline-offset: 7px;
@@ -112,7 +116,8 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            #gradientButton {
+            #gradientButton,
+            #gradientButton.is-stabilizing {
                 transition: none;
             }
         }

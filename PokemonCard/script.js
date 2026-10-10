@@ -3,14 +3,19 @@ const statusText = document.getElementById('statusText');
 
 let orientationBaseline = null;
 let motionEnabled = false;
-let spinAngles = { x: 0, y: 0, z: 0 };
-let spinVelocities = { x: 0, y: 0, z: 0 };
+let spinAngle = 0;
+let spinVelocity = 0;
 let spinFrame = 0;
 let lastSpinFrame = null;
 let spinHoldUntil = 0;
+let spinStabilizeTimer = 0;
 
 const SPIN_THRESHOLD_DEG_PER_SEC = 360;
 const MAX_SPIN_DEG_PER_SEC = 1080;
+const SPIN_STABILIZE_DELAY_MS = 5000;
+const SPIN_STABILIZE_DURATION_MS = 900;
+
+card.style.setProperty('--spin-stabilize-duration', `${SPIN_STABILIZE_DURATION_MS}ms`);
 
 function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
@@ -51,8 +56,8 @@ function getAccelerationMagnitude(acceleration, accelerationIncludingGravity) {
 }
 
 function animateSpin(timestamp) {
-    if (timestamp > spinHoldUntil || Math.hypot(spinVelocities.x, spinVelocities.y, spinVelocities.z) < 1) {
-        spinVelocities = { x: 0, y: 0, z: 0 };
+    if (timestamp > spinHoldUntil || Math.abs(spinVelocity) < 1) {
+        spinVelocity = 0;
         spinFrame = 0;
         lastSpinFrame = null;
         card.classList.remove('is-spinning');
@@ -61,12 +66,20 @@ function animateSpin(timestamp) {
 
     const elapsed = lastSpinFrame === null ? 0 : Math.min(timestamp - lastSpinFrame, 50);
     lastSpinFrame = timestamp;
-    for (const axis of ['x', 'y', 'z']) {
-        spinAngles[axis] = (spinAngles[axis] + spinVelocities[axis] * elapsed / 1000) % 360;
-        card.style.setProperty(`--spin-${axis}`, `${spinAngles[axis]}deg`);
-    }
+    spinAngle = (spinAngle + spinVelocity * elapsed / 1000) % 360;
+    card.style.setProperty('--spin-y', `${spinAngle}deg`);
     card.classList.add('is-spinning');
     spinFrame = requestAnimationFrame(animateSpin);
+}
+
+function stabilizeCard() {
+    spinVelocity = 0;
+    spinAngle = 0;
+    card.classList.remove('is-spinning');
+    card.classList.add('is-stabilizing');
+    card.style.setProperty('--spin-y', '0deg');
+    setTilt(0, 0, 50, 50);
+    window.setTimeout(() => card.classList.remove('is-stabilizing'), SPIN_STABILIZE_DURATION_MS);
 }
 
 function setSpinFromRate(rotationRate, holdMs = 150) {
@@ -78,19 +91,20 @@ function setSpinFromRate(rotationRate, holdMs = 150) {
         ? Math.min((angularSpeed - SPIN_THRESHOLD_DEG_PER_SEC) * 2, MAX_SPIN_DEG_PER_SEC)
         : 0;
 
-    spinVelocities = angularSpeed > 0
-        ? {
-            x: beta / angularSpeed * spinSpeed,
-            y: gamma / angularSpeed * spinSpeed,
-            z: alpha / angularSpeed * spinSpeed
-        }
-        : { x: 0, y: 0, z: 0 };
+    const dominantRate = [alpha, beta, gamma].reduce((largest, rate) =>
+        Math.abs(rate) > Math.abs(largest) ? rate : largest, 0);
+    spinVelocity = Math.sign(dominantRate || 1) * spinSpeed;
 
     if (spinSpeed > 0) {
+        window.clearTimeout(spinStabilizeTimer);
+        card.classList.remove('is-stabilizing');
+        spinStabilizeTimer = window.setTimeout(stabilizeCard, SPIN_STABILIZE_DELAY_MS);
         spinHoldUntil = performance.now() + holdMs;
         if (!spinFrame) {
             spinFrame = requestAnimationFrame(animateSpin);
         }
+    } else {
+        spinVelocity = 0;
     }
 
     return angularSpeed;

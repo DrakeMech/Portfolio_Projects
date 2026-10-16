@@ -664,9 +664,12 @@ ul {
 
 .projectsGridCover {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: stretch;
   overflow: visible;
+  height: auto;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
   padding: 0 40px 60px 40px;
@@ -680,6 +683,9 @@ ul {
   width: 100%;
   max-width: 400px;
   max-height: 480px;
+  padding: 0;
+  align-items: stretch;
+  gap: 0;
   cursor: pointer;
   border-radius: 12px;
   overflow: hidden;
@@ -693,6 +699,7 @@ ul {
 
 .projectsGridCover .projectCard {
   flex: 1 1 280px;
+  height: auto;
 }
 
 .projectCard::before,
@@ -751,13 +758,19 @@ ul {
 }
 
 .projectImage {
+  display: block;
+  flex: none;
+  overflow: hidden;
+  border-bottom: 1px solid #333;
   width: 100%;
   height: 200px;
-  overflow: hidden;
+  padding: 0;
   background: #222;
 }
 
 .projectImage img {
+  display: block;
+  flex: none;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -840,10 +853,13 @@ ul {
 }
 
 .projectInfo {
+  width: 100%;
+  height: auto;
   padding: 20px;
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   gap: 10px;
 }
 
@@ -1354,6 +1370,10 @@ main {
 }
 
 @media (max-width: 480px) {
+
+  main {
+    padding-bottom: 100px;
+  }
 
   .name2{
     font-size: 18px;

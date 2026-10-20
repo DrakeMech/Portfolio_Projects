@@ -27,22 +27,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const moreInfoButton = document.querySelector('.moreInfoButton');
+    const moreInfoToggle = moreInfoButton && moreInfoButton.querySelector('button');
     const moreInfo = document.getElementById('moreInfo');
-    if (moreInfoButton && moreInfo) {
-        moreInfoButton.addEventListener('click', function () {
+    if (moreInfoButton && moreInfoToggle && moreInfo) {
+        moreInfoToggle.addEventListener('click', function () {
             const isOpen = moreInfo.classList.toggle('open');
-            moreInfoButton.textContent = isOpen ? 'LESS INFO' : 'MORE INFO';
-            moreInfoButton.setAttribute('aria-expanded', String(isOpen));
+            moreInfoToggle.textContent = isOpen ? 'LESS INFO' : 'MORE INFO';
+            moreInfoToggle.setAttribute('aria-expanded', String(isOpen));
         });
 
-        // window.addEventListener('scroll', function () {
-        //     const rect = moreInfoButton.getBoundingClientRect();
-        //     if (rect.top <= 60) {
-        //         moreInfoButton.classList.add('stuck');
-        //     } else {
-        //         moreInfoButton.classList.remove('stuck');
-        //     }
-        // });
+        const updateMoreInfoButtonPosition = function () {
+            const rect = moreInfoButton.getBoundingClientRect();
+            if (rect.top <= 60) {
+                moreInfoButton.classList.add('stuck');
+            } else {
+                moreInfoButton.classList.remove('stuck');
+            }
+        };
+
+        window.addEventListener('scroll', updateMoreInfoButtonPosition, { passive: true });
+        updateMoreInfoButtonPosition();
     }
 });
 

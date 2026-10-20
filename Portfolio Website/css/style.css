@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 html {
@@ -61,6 +61,13 @@ div.imageCover,
   gap: 2%;
   overflow: hidden;
   text-align: center;
+}
+
+div.moreInfoButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 div.imageCover {
@@ -923,7 +930,7 @@ ul {
 main div {
   display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     gap: 10px;
     padding: 5% 10%;
     height: 100%;
@@ -1153,7 +1160,7 @@ main {
   margin: 0;
   justify-content: center;
   align-items: center; /* Optional: for vertical centering */
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .bg {
@@ -1388,11 +1395,11 @@ main {
 
   .frontText {
     padding-top: 5%;
-    font-size: 50px;
+    font-size: 30px;
   }
 
   .pageTitle {
-    font-size: 55px;
+    font-size: 30px;
   }
 
   .projectsTitle {
@@ -1587,4 +1594,3 @@ main {
     gap: 20px;
   }
 }
-

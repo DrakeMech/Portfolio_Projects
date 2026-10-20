@@ -4,7 +4,7 @@
             margin: 0 auto;
             color: #e8e2e2;
             line-height: 1.8;
-            overflow-x: hidden;
+            overflow-x: clip;
         }
 
         .projectContent h1 {
@@ -66,52 +66,58 @@
             border-radius: 8px;
         }
 
-        .moreInfoButton {
-            padding: 14px 26px;
+        .projectContent .moreInfoButton {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: max-content;
+            height: auto;
+            gap: 0;
+            padding: 0;
             margin: 28px 0 12px;
+            position: sticky;
+            position: -webkit-sticky;
+            top: 60px;
+            z-index: 2;
+            transition: transform 0.25s ease;
+        }
+
+        .moreInfoButton button {
+            padding: 12px 22px;
             background: rgba(148, 148, 148, 0.788);
             color: #e8e2e2;
             border: 1px solid rgba(221, 225, 229, 0.25);
             border-radius: 999px;
             font-size: 16px;
+            font-weight: 600;
             letter-spacing: 1px;
             cursor: pointer;
-            transition: left 1s ease, margin 1s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-            position: sticky;
-            position: -webkit-sticky;
-            top: 50px;
-            left: 0;
-            z-index: 1;
+            white-space: nowrap;
+            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
         }
 
-        .moreInfoButton:hover {
+        .moreInfoButton button:hover {
             background: rgba(221, 225, 229, 0.14);
-            border-color: rgba(221, 225, 229, 0.45);
+            border-color: rgba(221, 225, 229, 0.65);
         }
 
         .moreInfoButton.stuck {
-            transform: translateX(-35vw);
-            transition: 1s ease;
+            transform: translateX(calc(-1 * min(35vw, 50px)));
         }
 
-
-        /* Responsive adjustments for the stuck button so it centers better on various viewports */
-        @media (max-width: 1200px) {
-            .moreInfoButton.stuck { transform: translateX(-35vw); }
+        .moreInfoButton button:focus-visible {
+            outline: 2px solid #e8e2e2;
+            outline-offset: 3px;
         }
 
         @media (max-width: 900px) {
-            .moreInfoButton.stuck { transform: translateX(-40vw); }
-        }
-
-        @media (max-width: 600px) {
-            /* on small screens keep the button mostly visible */
-            .moreInfoButton.stuck { transform: translateX(-40vw); }
-        }
-
-        @media (max-width: 380px) {
-            /* on very small screens don't push it off-screen */
-            .moreInfoButton.stuck { transform: translateX( 0vw); }
+            .moreInfoButton.stuck {
+                transform: none;
+            }
+            .projectContent .moreInfoButton {
+                position: relative;
+                top: 0;
+            }
         }
 
         #moreInfo {
@@ -163,4 +169,3 @@
                 font-size: 22px;
             }
         }
-

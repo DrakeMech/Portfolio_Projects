@@ -18,7 +18,7 @@
 <body>
 
 
-    <div class="imageCover" style="background-image: linear-gradient(0deg, #131313 5%, rgba(0, 0, 0, 0.00) 10%), url('../img/main/Gestures.png');">
+    <div class="imageCover" style="background-image: linear-gradient(0deg, #131313 5%, rgba(0, 0, 0, 0.00) 10%), url('../img/main/ThesisConceptCover.jpg');">
         <div class="frontText">
             <div class="pageTitle">Non-Newtonian Fluid UI for Sonic Manipulation</div>
         </div>
@@ -28,15 +28,18 @@
 
     <main>
         <div class="projectContent">
-
-            <img src="../img/main/Project4Cover.jpg" alt="Oobleck tangible interface prototype being explored by hand" class="coverImage">
-
-            <h1>Non-Newtonian Fluid Tangible User Interface for Sonic Manipulations</h1>
             <h3>Non-linear Kinesthetic Feedback with Oobleck in Audio Production</h3>
+            <h4><strong>Type:</strong> Bachelors Thesis Project</h4>
+            <h4><strong>Possible Applications:</strong> Interactive Sound Design, Sonic Art Installation, Digital Foley and Music Instruments</h4>
+            <h4><strong>Role:</strong> Development, Sketching, Prototyping, Research</h4>
+            <h4><strong>Team:</strong> Individual</h4>
+            <h4><strong>Tools & Libraries:</strong> C++, Python, Arduino IDE, Control Surface library, Oobleck, Force-Sensitive Resistor (FSR), Ableton Live 12</h4>
 
             <h2>Overview</h2>
             <p>Digital audio interfaces often represent sound visually, leaving the physical controller with limited tactile feedback. This thesis investigates Oobleck, a shear-thickening mixture of cornstarch and water, as a tangible interface between a person's gestures and sonic transformations.</p>
             <p>The project explores how Oobleck's changing resistance can make sound manipulation physical and expressive. Rather than treating the material as a conventional, stable controller, the work studies its changing states and how those states shape the relationship between gesture, touch, and sound.</p>
+
+            <img src="../img/main/ThesisSetup1.png" alt="Prototype Setup1" class="coverImage">
 
             <h2>Aim and Objectives</h2>
             <p>The aim was to explore whether Oobleck's non-linear physical feedback could support expressive interaction with sound, and how different material constructions influence that experience.</p>
@@ -55,33 +58,52 @@
             <p>The MIDI data controlled four effects in Ableton Live 12, allowing participants to transform existing audio. A later prototype explored a six-input arrangement, combining mappings for different material samples with digital interaction sketches.</p>
             <p><strong>Tools:</strong> Oobleck (cornstarch and water), FSR pressure sensing, Arduino Nano 33 BLE, Control Surface library, MIDI CC, Arduino IDE Serial Plotter, and Ableton Live 12.</p>
 
-            <h2>Key Findings</h2>
-            <p>Participants connected the material's changing resistance to changes in sound. Applying sudden force made the Oobleck resist movement and supported abrupt sonic transformations, including sharp panning changes. Gentle, sustained gestures kept the material more fluid and supported continuous modulation.</p>
-            <p>The containment surface shaped the interaction: freeform Oobleck provided rich direct tactile feedback but could feel sticky and unpredictable, while elastic and plastic covers filtered some of that contact and emphasized other qualities, such as resistance and force feedback. Participants generally saw the prototypes as tools for transforming existing audio rather than generating sound from scratch, pointing toward post-production and sound-design workflows.</p>
-
-            <h2>Challenges and Limitations</h2>
-            <p>Oobleck's behavior changed over time as water evaporated and cornstarch settled. This affected consistency, transition speed, and sensor readings, making the interface less predictable across longer sessions. Its binding quality could also make it difficult for users to release or reposition their fingers.</p>
-            <p>The tested setup relied primarily on pressure sensing, which limited the range and spatial complexity of detectable gestures. The results are exploratory and reflect a small participant group; they do not establish a stable, general-purpose controller.</p>
-
-            <h2>Future Work</h2>
-            <p>Future iterations could investigate ways to slow material decay, use multiple sensors across a larger surface, and explore capacitive sensing alongside pressure. Further studies with sound designers, foley artists, and mixing engineers could test how the interface fits professional post-production practice.</p>
-            <p>The thesis also proposes exploring Oobleck and other phase-changing materials for visual, haptic, or other forms of tangible interaction beyond audio.</p>
+             <img src = "../img/main/SetupThesisPrototype.png" alt="Prototype Setup" class="coverImage">
 
             <h2>Prototype Demonstration</h2>
-            <div class="videoContainer videoPlaceholder">
-                <p>Video placeholder: Oobleck gestures and corresponding sonic transformations</p>
+            <div class="videoContainer">
+                <video controls preload="metadata">
+                    <source src="../videos/ThesisDemo.mov" type="video/mp4">
+                    Your browser does not support the video element.
+                </video>
             </div>
 
-            <h2>Prototype Process</h2>
-            <div class="videoContainer videoPlaceholder">
-                <p>Video placeholder: material preparation, prototype construction, and user testing</p>
+            <h3>Do you want to know more?</h3>
+            <button type="button" class="moreInfoButton" aria-expanded="false">MORE INFO</button>
+            <div id="moreInfo" class="collapsed">
+                <div id="moreInfoContent">
+                     <h2>Prototype Process</h2>
+                        <p>Oobleck's behavior initially was somewhat predictable, but it changed over time as the cornstarch and water mixture settled and the water evaporated.</p>
+                        <p>Thus, I had to change my approach to account for these dynamic properties. Where I had to take in account how the sensor readings would change over time and vary when interacting with the material samples.</p>
+                        <p>Therefore, the each sample was analyzed individually to capture its affordances given to participants, how the material responded in relation for the pressure sensor and also how the surface properties influenced the interaction.</p>
+                        <p>This led to devided responses across different samples, which resulted on building a program that plots the data while also transforming it for each MIDI input.</p>
+                    
+                        <img src = "../img/main/Plot.png" alt="Thesis Data Plot" class="coverImage">
+
+                        <p>For example, in this instance (Elastic Oobleck Sample), the data shows different gestural patterns, received by the sensors while interacting with the sample. What is more interesting is that difference in forces, oscilations on the input and pressure times can be encapsulated in their own gestural profiles.</p>
+                        <p>Therefore in the second cycle of the design process, I refined the approach to better capture these dynamic interactions and formulate metaphors in relation to the material's behavior.</p>
+
+                        <img src = "../img/main/ThesisGestures.png" alt="Gestural Metaphors and responses" class="coverImage">
+
+                    <h2>Key Findings</h2>
+                        <p>Participants connected the material's changing resistance to changes in sound. Applying sudden force made the Oobleck resist movement and supported abrupt sonic transformations, including sharp panning changes. Gentle, sustained gestures kept the material more fluid and supported continuous modulation.</p>
+                        <p>The containment surface shaped the interaction: freeform Oobleck provided rich direct tactile feedback but could feel sticky and unpredictable, while elastic and plastic covers filtered some of that contact and emphasized other qualities, such as resistance and force feedback. Participants generally saw the prototypes as tools for transforming existing audio rather than generating sound from scratch, pointing toward post-production and sound-design workflows.</p>
+
+                    <h2>Challenges and Limitations</h2>
+                        <p>Oobleck's behavior changed over time as water evaporated and cornstarch settled. This affected consistency, transition speed, and sensor readings, making the interface less predictable across longer sessions. Its binding quality could also make it difficult for users to release or reposition their fingers.</p>
+                        <p>The tested setup relied primarily on pressure sensing, which limited the range and spatial complexity of detectable gestures. The results are exploratory and reflect a small participant group; they do not establish a stable, general-purpose controller; but it coveres a big range of possibilities.</p>
+
+                    <h2>Future Work</h2>
+                        <p>Future iterations could investigate ways to slow material decay, use multiple sensors across a larger surface, and explore capacitive sensing alongside pressure. Further studies with sound designers, foley artists, and mixing engineers could test how the interface fits professional post-production practice.</p>
+
+                    <h2>Thesis and Resources</h2>
+                        <p><a href="https://www.diva-portal.org/smash/record.jsf?dswid=2659&pid=diva2%3A2098435&c=8&searchType=SIMPLE&language=en&query=Non-Newtonian+fluids&af=%5B%5D&aq=%5B%5B%5D%5D&aq2=%5B%5B%5D%5D&aqe=%5B%5D&noOfRows=50&sortOrder=author_sort_asc&sortOrder2=title_sort_asc&onlyFullText=false&sf=undergraduate" target="_blank" rel="noopener noreferrer" style="color: #7dd3fc;">Read the full thesis</a></p>
+                        <p><a href="/ThesisResearchTools/IDB_Thesis_Stefan_Cristache.pdf" style="color: #7dd3fc;">Download the full thesis (PDF)</a></p>
+                        <p><a href="https://github.com/DrakeMech/ThesisAppendixContent/tree/main/Tools/FSR_Data_Recorder" target="_blank" rel="noopener noreferrer"style="color: #7dd3fc;">FSR data recorder appendix</a></p>
+                </div>
             </div>
-
-            <h2>Thesis and Resources</h2>
-            <p><a href="https://www.diva-portal.org/smash/record.jsf?dswid=2659&pid=diva2%3A2098435&c=8&searchType=SIMPLE&language=en&query=Non-Newtonian+fluids&af=%5B%5D&aq=%5B%5B%5D%5D&aq2=%5B%5B%5D%5D&aqe=%5B%5D&noOfRows=50&sortOrder=author_sort_asc&sortOrder2=title_sort_asc&onlyFullText=false&sf=undergraduate" style="color: #7dd3fc;">Read the full thesis</a></p>
-            <p><a href="/ThesisResearchTools/IDB_Thesis_Stefan_Cristache.pdf" style="color: #7dd3fc;">Download the full thesis (PDF)</a></p>
-            <p><a href="https://github.com/DrakeMech/ThesisAppendixContent/tree/main/Tools/FSR_Data_Recorder" style="color: #7dd3fc;">FSR data recorder appendix</a></p>
-
+            
+            
         </div>
     </main>
 
